@@ -45,7 +45,7 @@ const Login = ({ user, setIsLoggedIn }) => {
             placeholder="Enter your email"
             onChange={(e) => {
               setEmail(e.target.value);
-              setError("");
+              // setError("");
             }}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
           />
@@ -85,14 +85,12 @@ const Login = ({ user, setIsLoggedIn }) => {
         {/* Login Button */}
         <button
           onClick={handleLogin}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 cursor-pointer rounded-lg transition duration-300 shadow-lg hover:shadow-xl"
         >
           Login
         </button>
 
-        <p className="text-center text-gray-500 text-sm mt-6">
-          Demo Credentials
-        </p>
+        
 
         
       </div>
