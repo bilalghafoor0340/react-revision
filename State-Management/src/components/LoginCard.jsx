@@ -10,10 +10,18 @@ const LoginCard = () => {
     const handleLogin = () => {
         setIsloggeIn(!isloggedIn)
     }
+
+    const handleValueChange = (event) => {
+      setMessage(event.target.value)
+    }
+
   return (
     <div>
         <button onClick={handleLogin}>{isloggedIn ? "LogOut" : "Login"}</button>
-        <input type="text" placeholder='Enter Your Value' value={message} onChange={(e)=> setMessage(e.target.value)} />
+        {/* <input type="text" value={message} onChange={(e) => setMessage(e.target.value) } placeholder='Type your message'/> */}
+        {/* also we write it */}
+        <input type="text" value={message} onChange={handleValueChange}  />
+        <p>{message}</p>
     </div>
   )
 }

@@ -6,7 +6,7 @@ const Counter = () => {
     console.log("component rerender");
 
     const [count, setCount] = useState(0)
-    console.log(`The counter vaue render with ${count }`);
+    console.log(`The counter value render with ${count}`);
     
     
     const handleCount = () => {

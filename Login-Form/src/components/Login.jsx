@@ -1,20 +1,53 @@
 import React, { useState } from "react";
 
-const Login = ({ user, setIsLoggedIn }) => {
+const Login = ({ users, setIsLoggedIn, setShowSignUp }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+
+// for passswored validatiion
+  // const validatePassword = (password) => {
+  //   if(password.length < 8){
+  //     return "Password must be at least 8 characters"
+  //   }
+  //   if(!/[A-Z]/.test(password)){
+  //     return "Password must contain at leat 1 UpperCase letter"
+  //   }
+  //   if(!/[0-9]/.test(password)){
+  //     return "Password contaim at least One Number";
+  //   }
+  //   return "";
+  // }
+
   const handleLogin = () => {
-    if (
-      email.trim() === user.email &&
-      password.trim() === user.password
-    ) {
+    const foundUser = users.find(
+      (user) => 
+        user.email ===email &&
+      user.password === password
+    )
+
+    if(foundUser){
       setError("");
-      setIsLoggedIn(true);
-    } else {
-      setError("Incorrect Email or Password");
+      setIsLoggedIn(true)
     }
+    else{
+      setError("Incorrect Email or Password")
+    }
+  //   const passwordError = validatePassword(password)
+  //     if (passwordError) {
+  //   setError(passwordError);
+  //   return;
+  // }
+  //   if (
+  //     email.trim() === user.email &&
+  //     password.trim() === user.password
+  //   ) {
+  //     setError(passwordError);
+  //     setIsLoggedIn(true);
+  //   } else {
+  //     setError("Incorrect Email or Password");
+  //   }
   };
 
   return (
@@ -90,7 +123,15 @@ const Login = ({ user, setIsLoggedIn }) => {
           Login
         </button>
 
-        
+      <p className="mt-6 text-center text-sm text-gray-500">
+        Don't have an account?{" "}
+      <button
+        onClick={() => setShowSignUp(true)}
+        className="font-semibold text-blue-600 hover:text-blue-700 hover:underline transition duration-200 cursor-pointer"
+        >
+      Sign Up
+      </button>
+      </p>
 
         
       </div>

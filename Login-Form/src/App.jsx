@@ -3,24 +3,34 @@ import { useState } from 'react'
 import './App.css'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
+import SignUp from './components/SignUp'
 
 function App() {
 
-  const user = {
-    email: "admin@gmail.com",
-    password: "12345"
-  }
-
+// Dashboard or authentication page?
   const [isLoggedIn , setIsLoggedIn] = useState(false)
+  const [users, setUsers] = useState([]);
+  // show signup or login
+  const [showSignUp, setShowSignUp] = useState(true);
 
   return (
     <>
-    {/* <Login user={user}/>
-    <DashBoard/> */}
-    {isLoggedIn ? (
+    {/* <SignUp users = {users} setUsers= {setUsers}/> */}
+     {/* <Login user={user}/>
+    <DashBoard/>  */}
+    {/* {isLoggedIn ? (
       <DashBoard setIsLoggedIn={setIsLoggedIn}/> 
     ) : 
-    (<Login user={user} setIsLoggedIn={setIsLoggedIn}/>)}
+    (<Login users={users} setIsLoggedIn={setIsLoggedIn}/>)}
+     */}
+    {/* <Login users={users} setIsLoggedIn={setIsLoggedIn}/> */}
+    {isLoggedIn ? (
+      <DashBoard setIsLoggedIn={setIsLoggedIn}/>
+    ) : showSignUp ? (
+      <SignUp users={users} setUsers={setUsers} setShowSignUp= {setShowSignUp}/>
+    ) : (
+      <Login users={users} setIsLoggedIn={setIsLoggedIn}  setShowSignUp={setShowSignUp}/>
+    )}
   </>
   )
 }

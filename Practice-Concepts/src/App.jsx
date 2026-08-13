@@ -18,6 +18,7 @@ function App() {
 
   return (
     <div>
+      <hr /><hr />
       <h3>Now learning about hoe props and parentd can work on rendering data </h3>
       <ProductsList/>
       <hr /><hr />

@@ -21,7 +21,8 @@ const DashBoard = ({ setIsLoggedIn }) => {
 
         <button
           onClick={handleLogout}
-          className="mt-8 bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl transition"
+          className="mt-8 bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl transition
+           cursor-pointer"
         >
           Logout
         </button>
