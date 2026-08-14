@@ -17,6 +17,7 @@ const LoginCard = () => {
 
   return (
     <div>
+      <hr /><hr />
         <button onClick={handleLogin}>{isloggedIn ? "LogOut" : "Login"}</button>
         {/* <input type="text" value={message} onChange={(e) => setMessage(e.target.value) } placeholder='Type your message'/> */}
         {/* also we write it */}

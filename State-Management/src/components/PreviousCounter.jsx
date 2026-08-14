@@ -6,8 +6,8 @@ const PreviousCounter = () => {
 
     const handleClick = (prev) => {
         setCount((prev) => prev + 1)
-        console.log("After count setcount(prev + 1) is ", count);
-        // return prev + 1
+      
+        
         
         setCount((prev) => prev + 5)
         console.log("After count setcount(prev + 5) is ", count);
@@ -19,6 +19,7 @@ const PreviousCounter = () => {
     }
   return (
     <div>
+      <hr /><hr />
         <h3>Count:{count}</h3>
         <button onClick={handleClick}>Increament</button>
         {/* <button onClick={() => setCount(count - 1)}>Decreament</button> */}
