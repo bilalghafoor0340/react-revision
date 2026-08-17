@@ -1,38 +1,75 @@
 import React, { useState } from 'react'
 
-
 const ShoppingCard = () => {
-    return (
-    <div>
-        <ProductCard/>
-        <CardSummary/>
-    </div>
-    )
-}
+    const [cardItems, setCardItems] = useState({
+        reactCourse: 0,
+        vueCourse: 0
+    })
 
+    const prices = {
+        reactCourse : 49.99,
+        vueCourse: 99.99
+    }
 
+    const handleAddReactCourse = () => {
+        setCardItems({...cardItems, 
+            reactCourse: cardItems.reactCourse + 1
+        })
+    }
 
-export default ShoppingCard
+    const handleAddVueCourse = () => {
+        setCardItems({...cardItems, 
+            vueCourse: cardItems.vueCourse + 1
+        })
+    }
 
-const ProductCard = () => {
-    const [quantity, setQuantity] = useState(0);
+    const clearCard = () => {
+        setCardItems({
+            reactCourse: 0,
+            vueCourse: 0
+        })
+    }
+
   return (
     <div>
-        <h3>Web Development Course</h3>
-        <p>$49.99</p>
-        <p>Quantity: {quantity}</p>
-        <button onClick={() => setQuantity(quantity + 1)}>Add To Card</button>
+        <hr /><hr />
+        <h1>Handle Shopping Card through lifting</h1>
+        <ProductCard name= "React Course" price={prices.reactCourse} quantity={cardItems.reactCourse} onAddToCard = {handleAddReactCourse}/>
+        <ProductCard name= "Vue Course" price={prices.vueCourse} quantity={cardItems.vueCourse} onAddToCard = {handleAddVueCourse}/>
+        <CardSummary cardItems={cardItems} prices={prices}/>
+        <button onClick={clearCard}>Clear Card</button>
     </div>
   )
 }
 
+export default ShoppingCard
 
-export const CardSummary =() => {
+export const ProductCard = ({name, price, quantity, onAddToCard}) => {
+
+    // const [quantity, setQuantity] = useState();
+    return (
+        <div>
+            <h3>{name}</h3>
+            <p>{price}</p>
+            <p>Quantity: {quantity}</p>
+            <button onClick={onAddToCard}>Add To Card</button>
+            
+        </div>
+    )
+}
+
+export const CardSummary = ({cardItems, prices}) => {
+    const totalItems = cardItems.reactCourse + cardItems.vueCourse
+
+    const totalPrice = 
+    cardItems.reactCourse * prices.reactCourse + 
+    cardItems.vueCourse * prices.vueCourse
+    
     return (
         <div>
             <h3>Card Summary</h3>
-            <p>Total Items:</p>
-            <p>Total Price:</p>
+            <p>Total items: {totalItems}</p>
+            <p>Total Price : ${totalPrice.toFixed(2)}</p>
         </div>
     )
 }
