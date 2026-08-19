@@ -13,10 +13,10 @@ function App() {
   return (
     <>
     <ShoppingCart/>
-    <ReducerCounter/>
+    {/* <ReducerCounter/>
       <TodoList/>
       <PayloadCounter/>
-      <SimpleCounter/>
+      <SimpleCounter/> */}
     </>
   )
 }

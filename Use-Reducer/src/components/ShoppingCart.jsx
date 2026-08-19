@@ -447,34 +447,56 @@ const ShoppingCart = () => {
 
 
     return (
-        <div>
+    <div className="min-h-screen bg-gray-100 py-10">
 
-            <hr />
-            <hr />
+        <div className="max-w-7xl mx-auto px-4">
 
-            {/* Products */}
-            <ProductList
-                products={products}
-                dispatch={dispatch}
-            />
+            {/* Header */}
+            <div className="mb-8">
+                <h1 className="text-3xl font-bold text-gray-800">
+                    Mankyal Collection
+                </h1>
 
-
-            {/* Cart */}
-            <Cart
-                items={state.items}
-                dispatch={dispatch}
-            />
+                <p className="mt-2 text-gray-500">
+                    Pure Woolen Shawls Collection
+                </p>
+            </div>
 
 
-            {/* Summary */}
-            <CartSummary
-                totalItems={state.totalItems}
-                totalAmount={state.totalAmount}
-                dispatch={dispatch}
-            />
+            {/* Main Content */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                {/* Products */}
+                <div className="lg:col-span-2">
+                    <ProductList
+                        products={products}
+                        dispatch={dispatch}
+                    />
+                </div>
+
+
+                {/* Cart + Summary */}
+                <div className="space-y-6">
+
+                    <Cart
+                        items={state.items}
+                        dispatch={dispatch}
+                    />
+
+                    <CartSummary
+                        totalItems={state.totalItems}
+                        totalAmount={state.totalAmount}
+                        dispatch={dispatch}
+                    />
+
+                </div>
+
+            </div>
 
         </div>
-    )
+
+    </div>
+)
 }
 
 export default ShoppingCart
