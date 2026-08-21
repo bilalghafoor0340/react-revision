@@ -1,0 +1,372 @@
+/**
+ * App.css
+ * -----------------------------------------------------------------------
+ * Layout and component styling. Organized top-to-bottom in the order
+ * elements appear on the page: shell -> header -> ticker -> banner ->
+ * main (selector, price card, chart) -> footer, then a mobile breakpoint
+ * at the bottom.
+ * -----------------------------------------------------------------------
+ */
+
+.app-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- Header ---------- */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.app-header__title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.app-header__mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, var(--color-accent), #b9812e);
+  color: #14100a;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.app-header h1 {
+  font-size: 20px;
+}
+
+.app-header__subtitle {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.app-header__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot--live {
+  background: var(--color-up);
+  box-shadow: 0 0 0 3px rgba(31, 216, 164, 0.18);
+}
+
+.status-dot--error {
+  background: var(--color-down);
+  box-shadow: 0 0 0 3px rgba(255, 92, 114, 0.18);
+}
+
+/* ---------- Ticker strip (signature element) ---------- */
+
+.ticker-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+}
+
+.ticker-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 10px 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--color-text);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.ticker-item:hover {
+  border-color: var(--color-accent);
+}
+
+.ticker-item:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.ticker-item--active {
+  border-color: var(--color-accent);
+  background: var(--color-surface-alt);
+}
+
+.ticker-item__symbol {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+.ticker-item__price {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.ticker-item__change {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.ticker-item__change--up {
+  color: var(--color-up);
+}
+
+.ticker-item__change--down {
+  color: var(--color-down);
+}
+
+/* ---------- Error banner ---------- */
+
+.banner {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+}
+
+.banner--error {
+  background: rgba(255, 92, 114, 0.1);
+  border: 1px solid rgba(255, 92, 114, 0.35);
+  color: #ffb3bd;
+}
+
+/* ---------- Main layout ---------- */
+
+.app-main {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.app-main__side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.app-main__chart {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  font-size: 16px;
+}
+
+.section-heading__hint {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Currency selector ---------- */
+
+.currency-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.currency-selector__label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.currency-selector__select {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+/* ---------- Price card ---------- */
+
+.price-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+}
+
+.price-card--loading {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.price-card__identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.price-card__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.price-card__identity h2 {
+  font-size: 15px;
+}
+
+.price-card__symbol {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.price-card__price {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.price-card__change {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.price-card__change.is-up {
+  color: var(--color-up);
+}
+
+.price-card__change.is-down {
+  color: var(--color-down);
+}
+
+.price-card__stats {
+  margin: 16px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+}
+
+.price-card__stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.price-card__stats dt {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.price-card__stats dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* ---------- Chart ---------- */
+
+.price-chart--empty {
+  display: grid;
+  place-items: center;
+  height: 340px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.chart-tooltip {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.chart-tooltip__time {
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.chart-tooltip__price {
+  font-weight: 700;
+}
+
+/* ---------- Footer ---------- */
+
+.app-footer {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  padding-top: 8px;
+}
+
+/* ---------- Responsive: mobile ---------- */
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding: 14px 14px 32px;
+    gap: 16px;
+  }
+
+  .app-header h1 {
+    font-size: 17px;
+  }
+
+  .app-main {
+    grid-template-columns: 1fr;
+  }
+
+  .price-card__price {
+    font-size: 24px;
+  }
+}

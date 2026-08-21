@@ -1,0 +1,81 @@
+/**
+ * index.css
+ * -----------------------------------------------------------------------
+ * Global reset plus the app's design tokens (CSS custom properties).
+ * Every component-level stylesheet (App.css) reads colors and spacing
+ * from these variables instead of hardcoding values, so the palette can
+ * be changed in one place.
+ *
+ * Design direction: a dark "trading terminal" aesthetic — the kind of
+ * screen a crypto desk would actually run live prices on — with a
+ * monospace face for numbers (so digits align as they update) and a
+ * clean grotesk for UI chrome.
+ * -----------------------------------------------------------------------
+ */
+
+:root {
+  --color-bg: #0b0e13;
+  --color-surface: #12161d;
+  --color-surface-alt: #171c25;
+  --color-border: #232a37;
+  --color-grid: #1e2430;
+
+  --color-text: #e8ecf1;
+  --color-text-muted: #8891a3;
+
+  --color-up: #1fd8a4;
+  --color-down: #ff5c72;
+  --color-accent: #f2b84b;
+
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, monospace;
+
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+select {
+  font-family: inherit;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+/* Respect reduced-motion preferences for anything we do animate. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
